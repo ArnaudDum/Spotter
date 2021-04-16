@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 
+const userRoute = require('./routes/userRoute');
+
 const app = express();
 
 mongoose.connect('mongodb+srv://DUM:Highjump210@spotter.ukh11.mongodb.net/SPOTTER?retryWrites=true&w=majority',
@@ -19,7 +21,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//app.use('/api/post', postRoutes);
-//app.use('/api/auth', userRoutes);
+//app.use('/api/post', postRoute);
+app.use('/api/auth', userRoute);
 
 module.exports = app;
